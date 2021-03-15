@@ -36,7 +36,6 @@ axios.interceptors.response.use(
 )
 
 function handleError(error, reject, opts) {
-  debugger
   let isAlert = opts.custom ? opts.custom['isAlert'] : true;
   isAlert = isAlert === undefined ? true : isAlert;
   if (isAlert) {
@@ -95,7 +94,7 @@ function handleSuccess(res, resolve, opts) {
   let isAlert = opts.custom ? opts.custom['isAlert'] : true;
   isAlert = isAlert === undefined ? true : isAlert;
   const resData = res.data;
-  debugger
+
   if (resData.isSuccess === false) {
     // 未登录
     if (resData.code === 40000 || resData.code === 40001
@@ -103,7 +102,7 @@ function handleSuccess(res, resolve, opts) {
       || resData.code === 40005 || resData.code === 40006
       || resData.code === 40008
     ) {
-      debugger
+
       MessageBox.alert(resData.msg, '提醒', {
         confirmButtonText: '确定',
         callback: () => {
